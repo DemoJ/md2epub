@@ -2,9 +2,9 @@ import os
 import shutil
 import pypandoc
 
-input_folder = r"C:\Users\dy003\Desktop\input"
-output_file = "output.epub"
-temp_folder = r"C:\Users\dy003\Desktop\temp"
+input_folder = r"C:\Users\dy003\Desktop\files"  #md文件所在文件夹
+output_file = "output.epub"  #在当前文件夹下生成epub文件
+temp_folder = r"C:\Users\dy003\Desktop\temp"  #随便弄个路径当临时文件夹，反正脚本完成后会自动删除
 
 # 创建临时文件夹
 os.makedirs(temp_folder, exist_ok=True)
@@ -34,7 +34,7 @@ for file_name in os.listdir(input_folder):
 combined_content = '\n'.join(file_list)
 
 # 将Markdown内容转换为EPUB，指定临时文件夹作为图片根路径
-pypandoc.convert_text(combined_content, 'epub', format='md', outputfile=output_file, extra_args=['--embed-resources',f'--resource-path={temp_folder}', '--metadata', 'title=财富自由之路by李笑来'])
+pypandoc.convert_text(combined_content, 'epub', format='md', outputfile=output_file, extra_args=['--embed-resources',f'--resource-path={temp_folder}', '--metadata', 'title=book title'])
 
 # 删除临时文件夹
 shutil.rmtree(temp_folder)
